@@ -1,2 +1,2 @@
-# development-environment
-Scripts to configure a new development environment
+# Desktop environment
+Script and files to configure a new desktop environment. Just run `./install.sh`.

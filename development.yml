@@ -1,6 +1,0 @@
----
-- hosts: development
-
-  roles:
-    - emacs
-    - git

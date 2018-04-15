@@ -4,3 +4,5 @@
 	username = jmhelt
 [core]
 	editor = emacs
+[push]
+	default = simple
