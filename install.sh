@@ -63,6 +63,7 @@ install_packages \
     autoconf \
     automake \
     cscope \
+    curl \
     emacs \
     firefox \
     g++ \
@@ -71,8 +72,10 @@ install_packages \
     git \
     libtool \
     lm-sensors \
+    openvpn \
     redshift \
     texlive \
+    thunderbird \
     valgrind \
     vim \
     wget
