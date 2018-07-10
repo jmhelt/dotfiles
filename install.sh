@@ -102,14 +102,19 @@ sudo apt-get update && sudo apt-get upgrade -y
 install_packages \
     autoconf \
     automake \
+    bison \
     cscope \
     curl \
     emacs \
     firefox \
+    flex \
     g++ \
     gcc \
     gdb \
     git \
+    libelf-dev \
+    libncurses5-dev \
+    libssl-dev \
     libtool \
     lm-sensors \
     openvpn \
