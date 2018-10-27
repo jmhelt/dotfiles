@@ -2,18 +2,8 @@
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-function is_installed {
-    dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep "ok installed" &> /dev/null
-}
-
-function install_package {
-    sudo apt-get install -y "$1"
-}
-
 function install_packages {
-    for pkg in "$@"; do
-	is_installed "$pkg" || install_package "$pkg"
-    done
+    sudo apt-get install -y "$@"
 }
 
 function link_dotfile {
@@ -36,65 +26,29 @@ function install_emacsd {
 }
 
 function install_spotify {
-    if ! is_installed spotify-client; then
-	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-	echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
-	sudo apt-get update
-	sudo apt-get install -y spotify-client
-    fi
+    sudo snap install spotify
 }
 
-function install_dropbox {
-    if ! is_installed dropbox; then
-	cd /tmp \
-	    && wget -O dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb \
-	    && (sudo dpkg -i dropbox.deb || sudo apt-get -f install -y)
+function install_google_drive {
+    sudo add-apt-repository -y ppa:alessandro-strada/ppa \
+        && sudo apt update \
+	&& sudo apt install -y google-drive-ocamlfuse
 
-	# Restart nautilus if necessary
-	if which nautilus; then
-	    nautilus --quit
-	fi
+    if [[ ! -d ~/Drive ]]; then
+	mkdir ~/Drive \
+            && google-drive-ocamlfuse \
+	    && google-drive-ocamlfuse ~/Drive
     fi
 }
 
 function install_zotero {
-    local zotero_version=5.0.45
-    
-    if [[ ! -d /opt/zotero ]]; then
-	cd /tmp \
-	    && wget -O zotero.tar.bz2 "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=$zotero_version" \
-	    && tar -xjf zotero.tar.bz2 \
-	    && chmod -R 0755 Zotero_linux-x86_64 \
-	    && sudo chown -R root:root Zotero_linux-x86_64 \
-	    && sudo mv Zotero_linux-x86_64 /opt/zotero \
-	    && echo "[Desktop Entry]
-Name=Zotero
-Comment=Open-source reference manager
-Exec=/opt/zotero/zotero
-Icon=/opt/zotero/chrome/icons/default/default256.png
-Type=Application
-Terminal=false
-Categories=Office;
-MimeType=text/plain
-StartupNotify=true" | sudo tee /usr/share/applications/zotero.desktop
-    fi
+    sudo add-apt-repository -y ppa:smathot/cogscinl \
+        && sudo apt update \
+        && sudo apt install -y zotero-standalone
 }
 
 function install_slack {
     sudo snap install --classic slack
-}
-
-function install_monaco_font {
-    local dst="/usr/share/fonts/truetype/ttf-monaco"
-
-    if [[ ! -d $dst ]]; then
-	sudo mkdir -p "$dst" \
-	    && cd "$dst" \
-	    && sudo wget https://github.com/hbin/top-programming-fonts/raw/master/Monaco-Linux.ttf \
-	    && sudo mkfontdir \
-	    && cd .. \
-	    && fc-cache
-    fi
 }
 
 sudo apt-get update && sudo apt-get upgrade -y
@@ -106,7 +60,6 @@ install_packages \
     cscope \
     curl \
     emacs \
-    firefox \
     flex \
     g++ \
     gcc \
@@ -117,10 +70,8 @@ install_packages \
     libssl-dev \
     libtool \
     lm-sensors \
-    openvpn \
     redshift \
-    texlive-full \
-    thunderbird \
+    texlive \
     valgrind \
     vim \
     wget \
@@ -128,10 +79,9 @@ install_packages \
 
 install_emacsd
 install_spotify
-install_dropbox
+install_google_drive
 install_zotero
 install_slack
-install_monaco_font
 
 link_dotfiles \
     gitconfig
