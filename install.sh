@@ -25,8 +25,11 @@ function install_emacsd {
     fi
 }
 
-function install_spotify {
-    sudo snap install spotify
+function install_r {
+    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
+	&& sudo add-apt-repository -y 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' \
+	&& sudo apt update \
+	&& sudo apt install -y r-base
 }
 
 function install_google_drive {
@@ -34,6 +37,10 @@ function install_google_drive {
 	&& sudo add-apt-repository -y "deb http://apt.insynchq.com/ubuntu $(lsb_release -sc) non-free contrib" \
         && sudo apt update \
 	&& sudo apt install -y insync
+}
+
+function install_spotify {
+    sudo snap install spotify
 }
 
 function install_zotero {
@@ -79,8 +86,9 @@ install_packages \
     whois
 
 install_emacsd
-install_spotify
+install_r
 install_google_drive
+install_spotify
 install_zotero
 install_slack
 
