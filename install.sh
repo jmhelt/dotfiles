@@ -79,6 +79,7 @@ install_packages \
     texinfo \
     texlive \
     texlive-bibtex-extra \
+    texlive-fonts-extra \
     texlive-latex-extra \
     texlive-science \
     valgrind \
