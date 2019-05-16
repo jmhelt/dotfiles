@@ -83,7 +83,6 @@ install_packages \
     libssl-dev \
     libtool \
     lm-sensors \
-    redshift-gtk \
     screen \
     texinfo \
     texlive \
