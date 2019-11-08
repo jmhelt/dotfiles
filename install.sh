@@ -96,4 +96,6 @@ install_slack
 link_dotfiles \
     gitconfig \
     emacs.d \
-    spacemacs
+    spacemacs \
+    i3
+
