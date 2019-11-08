@@ -157,31 +157,13 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 
-set $left DisplayPort-0
-set $right DisplayPort-1
-
-# Rotate right screen
-exec --no-startup-id xrandr --output $right --rotate right
-
-# Static workspace assignment
-workspace 1 output $left
-workspace 3 output $left
-workspace 5 output $left
-workspace 7 output $left
-workspace 9 output $left
-workspace 2 output $right
-workspace 4 output $right
-workspace 6 output $right
-workspace 8 output $right
-workspace 10 output $right
-
 bindsym $mod+r mode "resize"
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
 	position bottom
-	mode hide
+	mode dock
 	modifier $mod
         status_command i3status
 	tray_output primary
