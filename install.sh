@@ -90,5 +90,6 @@ link_dotfiles \
     gitconfig \
     emacs.d \
     spacemacs \
-    i3
+    i3 \
+    zshrc
 
