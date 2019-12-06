@@ -10,7 +10,7 @@ values."
    ;; Base distribution to use. This is a layer contained in the directory
    ;; `+distribution'. For now available distributions are `spacemacs-base'
    ;; or `spacemacs'. (default 'spacemacs)
-   dotspacemacs-distribution 'spacemacs
+   dotspacemacs-distribution 'spacemacs-base
    ;; Lazy installation of layers (i.e. layers are installed only when a file
    ;; with a supported type is opened). Possible values are `all', `unused'
    ;; and `nil'. `unused' will lazy install only unused layers (i.e. layers
@@ -71,7 +71,7 @@ values."
    ;; wrapped in a layer. If you need some configuration for these
    ;; packages, then consider creating a layer. You can also put the
    ;; configuration in `dotspacemacs/user-config'.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '(smartparens)
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
@@ -118,9 +118,9 @@ values."
    ;; with `:variables' keyword (similar to layers). Check the editing styles
    ;; section of the documentation for details on available variables.
    ;; (default 'vim)
-   dotspacemacs-editing-style 'vim
+   dotspacemacs-editing-style 'emacs
    ;; If non nil output loading progress in `*Messages*' buffer. (default nil)
-   dotspacemacs-verbose-loading nil
+   dotspacemacs-verbose-loading t
    ;; Specify the startup banner. Default value is `official', it displays
    ;; the official spacemacs logo. An integer value is the index of text
    ;; banner, `random' chooses a random text banner in `core/banners'
@@ -327,10 +327,11 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-       (add-hook 'doc-view-mode-hook 'auto-revert-mode)
-       (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
-             TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
-             TeX-source-correlate-start-server t)
+  (smartparens-global-mode t)
+  (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+  (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+        TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+        TeX-source-correlate-start-server t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -341,7 +342,8 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(bind-key avy hydra lv sql-indent pdf-tools tablist company-auctex auctex-latexmk auctex go-guru go-eldoc company-go go-mode paradox evil-lisp-state evil-iedit-state evil-anzu powerline spinner parent-mode evil-visual-mark-mode evil-tutor evil-surround highlight evil-mc evil-matchit evil-indent-plus iedit evil-exchange evil-ediff evil-args anzu adaptive-wrap yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic f company-emacs-eclim eclim s evil-cleverparens ess-R-data-view paredit ess-smart-equals ess ctable julia-mode helm-gitignore flyspell-correct-helm ace-jump-helm-line helm-themes helm-swoop helm-projectile helm-mode-manager helm-flx helm-descbinds helm-cscope helm-company helm-c-yasnippet helm-ag helm helm-core xcscope stickyfunc-enhance srefactor disaster company-c-headers cmake-mode clang-format orgit magit-gitflow flycheck-pos-tip evil-magit smeargle magit-popup magit gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-ivy flyspell-correct pos-tip flycheck transient git-commit with-editor dash company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete popup evil-visualstar evil goto-chg undo-tree ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline smex smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-escape eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word counsel-projectile column-enforce-mode clean-aindent-mode bind-map auto-highlight-symbol auto-compile async aggressive-indent ace-window ace-link)))
+   (quote
+    (projectile flx pkg-info epl packed bind-key avy hydra lv sql-indent pdf-tools tablist company-auctex auctex-latexmk auctex go-guru go-eldoc company-go go-mode paradox evil-lisp-state evil-iedit-state evil-anzu powerline spinner parent-mode evil-visual-mark-mode evil-tutor evil-surround highlight evil-mc evil-matchit evil-indent-plus iedit evil-exchange evil-ediff evil-args anzu adaptive-wrap yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic f company-emacs-eclim eclim s evil-cleverparens ess-R-data-view paredit ess-smart-equals ess ctable julia-mode helm-gitignore flyspell-correct-helm ace-jump-helm-line helm-themes helm-swoop helm-projectile helm-mode-manager helm-flx helm-descbinds helm-cscope helm-company helm-c-yasnippet helm-ag helm helm-core xcscope stickyfunc-enhance srefactor disaster company-c-headers cmake-mode clang-format orgit magit-gitflow flycheck-pos-tip evil-magit smeargle magit-popup magit gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-ivy flyspell-correct pos-tip flycheck transient git-commit with-editor dash company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete popup evil-visualstar evil goto-chg undo-tree ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline smex smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-escape eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word counsel-projectile column-enforce-mode clean-aindent-mode bind-map auto-highlight-symbol auto-compile async aggressive-indent ace-window ace-link))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
