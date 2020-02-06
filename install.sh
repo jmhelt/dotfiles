@@ -3,13 +3,41 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 GIT_REPO_DIR="$HOME/git"
 
+# os constants
+ARCH="Arch Linux"
+
+# get this os string
+if [[ -n "$(command -v lsb_release)" ]]; then
+	  OS=$(lsb_release -s -d)
+elif [[ -f "/etc/os-release" ]]; then
+	  OS=$(grep PRETTY_NAME /etc/os-release | sed 's/PRETTY_NAME=//g' | tr -d '="')
+elif [[ -f "/etc/debian_version" ]]; then
+	  OS="Debian $(cat /etc/debian_version)"
+elif [[ -f "/etc/redhat-release" ]]; then
+	  OS=$(cat /etc/redhat-release)
+else
+	  OS="$(uname -s) $(uname -r)"
+fi
+
+function update_upgrade {
+    if [[ $OS == $ARCH ]]; then
+        sudo pacman -Syu --noconfirm
+    else
+        sudo apt-get update && sudo apt-get upgrade -y
+    fi
+}
+
 function install_packages {
-    sudo apt-get install -y "$@"
+    if [[ $OS == $ARCH ]]; then
+        sudo pacman -S --noconfirm "$@"
+    else
+        sudo apt-get install -y "$@"
+    fi
 }
 
 function makedirs {
     for dir in "$@"; do
-	mkdir -p "$dir"
+	      mkdir -p "$dir"
     done
 }
 
@@ -19,79 +47,51 @@ function link_dotfile {
 
 function link_dotfiles {
     for f in "$@"; do
-	link_dotfile "$f"
+	      link_dotfile "$f"
     done
 }
 
-function install_r {
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
-	&& sudo add-apt-repository -y 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' \
-	&& sudo apt update \
-	&& sudo apt install -y r-base
+function link_xdg_file {
+    [[ ! -e "$HOME/.config" ]] && mkdir "$HOME/.config"
+    ln -sf "$SCRIPT_DIR/$1" "$HOME/.config/$1"
 }
 
-function install_google_drive {
-    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys ACCAF35C \
-	&& sudo add-apt-repository -y "deb http://apt.insynchq.com/ubuntu $(lsb_release -sc) non-free contrib" \
-        && sudo apt update \
-	&& sudo apt install -y insync
+function link_xdg_files {
+    for f in "$@"; do
+	      link_xdg_file "$f"
+    done
 }
 
-function install_spotify {
-    sudo snap install spotify
-}
-
-function install_slack {
-    sudo snap install --classic slack
-}
-
-sudo apt-get update && sudo apt-get upgrade -y
+update_upgrade
 
 install_packages \
-    autoconf \
-    automake \
-    bison \
-    cscope \
-    curl \
+    dmenu \
     emacs \
-    flex \
     firefox \
-    g++ \
-    gcc \
-    gdb \
     git \
-    latexmk \
-    libcurl4-openssl-dev \
-    libelf-dev \
-    libncurses5-dev \
-    libssl-dev \
-    libtool \
-    lm-sensors \
-    screen \
-    texinfo \
-    texlive \
-    texlive-bibtex-extra \
-    texlive-fonts-extra \
-    texlive-latex-extra \
-    texlive-science \
-    valgrind \
+    i3-wm \
+    i3blocks \
+    i3lock \
+    i3status \
+    openssh \
+    termite \
+    ttf-dejavu \
     vim \
-    wget \
-    whois
+    xautolock \
+    zsh
 
 makedirs $GIT_REPO_DIR
 
-install_r
-install_google_drive
-install_spotify
-install_slack
+link_xdg_files \
+    i3 \
+    termite
 
 link_dotfiles \
-    gitconfig \
     emacs.d \
+    gitconfig \
+    oh-my-zsh \
     spacemacs \
-    i3 \
+    xinitrc \
+    Xmodmap \
     zprofile \
-    zshrc \
-    oh-my-zsh
-
+    zshrc
