@@ -54,6 +54,7 @@ install_packages \
     gcc \
     gdb \
     git \
+    texlive \
     valgrind \
     vim \
     wget
