@@ -80,6 +80,10 @@ StartupNotify=true" | sudo tee /usr/share/applications/zotero.desktop
     fi
 }
 
+function install_slack {
+    sudo snap install --classic slack
+}
+
 sudo apt-get update && sudo apt-get upgrade -y
 
 install_packages \
@@ -108,6 +112,7 @@ install_emacsd
 install_spotify
 install_dropbox
 install_zotero
+install_slack
 
 link_dotfiles \
     gitconfig
