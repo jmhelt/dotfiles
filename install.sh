@@ -97,7 +97,7 @@ install_packages \
     lm-sensors \
     openvpn \
     redshift \
-    texlive \
+    texlive-full \
     thunderbird \
     valgrind \
     vim \
