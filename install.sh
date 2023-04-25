@@ -107,7 +107,6 @@ install_packages \
     curl \
     emacs \
     firefox \
-    flake8 \
     flex \
     g++ \
     gcc \
@@ -119,12 +118,6 @@ install_packages \
     libtool \
     lm-sensors \
     openvpn \
-    python \
-    python-autopep8 \
-    python-jedi \
-    python-pip \
-    python-rope \
-    python-yapf \
     redshift \
     texlive-full \
     thunderbird \
