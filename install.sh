@@ -41,12 +41,6 @@ function install_spotify {
     sudo snap install spotify
 }
 
-function install_zotero {
-    sudo add-apt-repository -y ppa:smathot/cogscinl \
-        && sudo apt update \
-        && sudo apt install -y zotero-standalone
-}
-
 function install_slack {
     sudo snap install --classic slack
 }
@@ -90,7 +84,6 @@ makedirs $GIT_REPO_DIR
 install_r
 install_google_drive
 install_spotify
-install_zotero
 install_slack
 
 link_dotfiles \
