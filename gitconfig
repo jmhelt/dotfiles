@@ -1,15 +1,12 @@
 [user]
-	name = Jeffrey Helt
-	email = jmhelt13@gmail.com
+	name = Jeff Helt
+	email = jmhelt@users.noreply.github.com
 	username = jmhelt
 [core]
-	editor = emacs
+	editor = nvim
 [push]
 	default = simple
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main
