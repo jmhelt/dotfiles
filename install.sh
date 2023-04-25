@@ -90,6 +90,7 @@ link_dotfiles \
     gitconfig \
     emacs.d \
     spacemacs \
+    xinitrc \
     i3 \
     zshrc \
     oh-my-zsh
