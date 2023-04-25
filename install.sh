@@ -91,5 +91,6 @@ link_dotfiles \
     emacs.d \
     spacemacs \
     i3 \
-    zshrc
+    zshrc \
+    oh-my-zsh
 
