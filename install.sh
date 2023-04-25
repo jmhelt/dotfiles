@@ -65,13 +65,19 @@ install_packages \
     gcc \
     gdb \
     git \
+    latexmk \
     libelf-dev \
     libncurses5-dev \
     libssl-dev \
     libtool \
     lm-sensors \
     redshift-gtk \
+    screen \
+    texinfo \
     texlive \
+    texlive-bibtex-extra \
+    texlive-latex-extra \
+    texlive-science \
     valgrind \
     vim \
     wget \
