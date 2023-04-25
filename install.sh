@@ -30,15 +30,10 @@ function install_spotify {
 }
 
 function install_google_drive {
-    sudo add-apt-repository -y ppa:alessandro-strada/ppa \
+    sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys ACCAF35C \
+	&& sudo add-apt-repository -y "deb http://apt.insynchq.com/ubuntu $(lsb_release -sc) non-free contrib" \
         && sudo apt update \
-	&& sudo apt install -y google-drive-ocamlfuse
-
-    if [[ ! -d ~/Drive ]]; then
-	mkdir ~/Drive \
-            && google-drive-ocamlfuse \
-	    && google-drive-ocamlfuse ~/Drive
-    fi
+	&& sudo apt install -y insync
 }
 
 function install_zotero {
