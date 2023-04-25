@@ -101,7 +101,6 @@ awful.util.tasklist_buttons = my_table.join(
 
 beautiful.init(string.format(gears.filesystem.get_configuration_dir() .. "/themes/%s/%s.lua",
   settings.chosen_theme, settings.chosen_theme))
-local theme = beautiful.get() -- Get loaded theme
 
 local myawesomemenu = {
   { "hotkeys", function() return false, hotkeys_popup.show_help end },
@@ -319,7 +318,7 @@ globalkeys = my_table.join(
     { description = "restore minimized", group = "client" }),
 
   -- Widgets popups
-  awful.key({ settings.altkey, }, "c", function() theme.cal.show(7) end,
+  awful.key({ settings.altkey, }, "c", function() beautiful.cal.show(7) end,
     { description = "show calendar", group = "widgets" }),
   awful.key({ settings.altkey, }, "h", function() if beautiful.fs then beautiful.fs.show(7) end end,
     { description = "show filesystem", group = "widgets" }),
@@ -332,23 +331,21 @@ globalkeys = my_table.join(
   awful.key({}, "XF86MonBrightnessDown", function() os.execute("xbacklight -dec 10") end,
     { description = "-10%", group = "hotkeys" }),
 
-  -- ALSA volume control
+  -- Pulseaudio volume control
   -- Volume Keys
   awful.key({}, "XF86AudioRaiseVolume",
     function()
-      os.execute(string.format("amixer -q set %s 1%%+", beautiful.volume.channel))
+      os.execute("pamixer -i 10")
       beautiful.volume.update()
     end),
-  --awful.key({ ctrlkey }, "Down",
   awful.key({}, "XF86AudioLowerVolume",
     function()
-      os.execute(string.format("amixer -q set %s 1%%-", beautiful.volume.channel))
+      os.execute("pamixer -d 10")
       beautiful.volume.update()
     end),
   awful.key({}, "XF86AudioMute",
     function()
-      os.execute(string.format("amixer -q set %s toggle",
-        beautiful.volume.togglechannel or beautiful.volume.channel))
+      os.execute("pamixer -t")
       beautiful.volume.update()
     end),
 
