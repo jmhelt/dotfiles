@@ -3,7 +3,7 @@
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 function is_installed {
-    dpkg-query -W -f='${Status}' "$pkg" 2>/dev/null | grep "ok installed" &> /dev/null
+    dpkg-query -W -f='${Status}' "$1" 2>/dev/null | grep "ok installed" &> /dev/null
 }
 
 function install_package {
@@ -36,11 +36,24 @@ function install_emacsd {
 }
 
 function install_spotify {
-    if [[ $(is_installed spotify_client) -eq 1 ]]; then
+    if ! is_installed spotify-client; then
 	sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
 	echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 	sudo apt-get update
 	sudo apt-get install -y spotify-client
+    fi
+}
+
+function install_dropbox {
+    if ! is_installed dropbox; then
+	cd /tmp \
+	    && wget -O dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb \
+	    && (sudo dpkg -i dropbox.deb || sudo apt-get -f install -y)
+
+	# Restart nautilus if necessary
+	if which nautilus; then
+	    nautilus --quit
+	fi
     fi
 }
 
@@ -61,6 +74,7 @@ install_packages \
 
 install_emacsd
 install_spotify
+install_dropbox
 
 link_dotfiles \
     gitconfig
