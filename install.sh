@@ -70,7 +70,7 @@ install_packages \
     libssl-dev \
     libtool \
     lm-sensors \
-    redshift \
+    redshift-gtk \
     texlive \
     valgrind \
     vim \
