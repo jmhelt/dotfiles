@@ -57,6 +57,29 @@ function install_dropbox {
     fi
 }
 
+function install_zotero {
+    local zotero_version=5.0.45
+    
+    if [[ ! -d /opt/zotero ]]; then
+	cd /tmp \
+	    && wget -O zotero.tar.bz2 "https://www.zotero.org/download/client/dl?channel=release&platform=linux-x86_64&version=$zotero_version" \
+	    && tar -xjf zotero.tar.bz2 \
+	    && chmod -R 0755 Zotero_linux-x86_64 \
+	    && sudo chown -R root:root Zotero_linux-x86_64 \
+	    && sudo mv Zotero_linux-x86_64 /opt/zotero \
+	    && echo "[Desktop Entry]
+Name=Zotero
+Comment=Open-source reference manager
+Exec=/opt/zotero/zotero
+Icon=/opt/zotero/chrome/icons/default/default256.png
+Type=Application
+Terminal=false
+Categories=Office;
+MimeType=text/plain
+StartupNotify=true" | sudo tee /usr/share/applications/zotero.desktop
+    fi
+}
+
 sudo apt-get update && sudo apt-get upgrade -y
 
 install_packages \
@@ -78,11 +101,13 @@ install_packages \
     thunderbird \
     valgrind \
     vim \
-    wget
+    wget \
+    whois
 
 install_emacsd
 install_spotify
 install_dropbox
+install_zotero
 
 link_dotfiles \
     gitconfig
