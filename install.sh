@@ -92,6 +92,7 @@ link_dotfiles \
     spacemacs \
     xinitrc \
     i3 \
+    zprofile \
     zshrc \
     oh-my-zsh
 
