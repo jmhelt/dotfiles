@@ -44,7 +44,8 @@ bindsym $mod+d exec dmenu_run
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # screen locker (first move to "safe" workspace without any chat app)
-bindsym Control+$mod+l exec i3lock -c 111111 -d
+exec --no-startup-id xautolock -time 5 -locker "i3lock -c 111111 -d"
+bindsym Control+$mod+l exec xautolock -locknow
 
 # change focus
 bindsym $mod+j focus left
