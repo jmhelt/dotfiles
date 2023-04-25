@@ -1,9 +1,16 @@
 #!/usr/bin/env bash
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+GIT_REPO_DIR="$HOME/git"
 
 function install_packages {
     sudo apt-get install -y "$@"
+}
+
+function makedirs {
+    for dir in "$@"; do
+	mkdir -p "$dir"
+    done
 }
 
 function link_dotfile {
@@ -21,7 +28,8 @@ function install_emacsd {
 	cd ~/.emacs.d
 	git pull -f origin master
     else
-	git clone git@github.com:jmhelt/emacs.d.git ~/.emacs.d
+	git clone git@github.com:jmhelt/emacs.d.git ~/git/emacs.d \
+	    && ln -s ~/git/emacs.d ~/.emacs.d
     fi
 }
 
@@ -86,6 +94,8 @@ install_packages \
     vim \
     wget \
     whois
+
+makedirs $GIT_REPO_DIR
 
 install_emacsd
 install_r
