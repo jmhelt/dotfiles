@@ -63,6 +63,7 @@ install_packages \
     curl \
     emacs \
     flex \
+    firefox \
     g++ \
     gcc \
     gdb \
