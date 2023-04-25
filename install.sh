@@ -23,16 +23,6 @@ function link_dotfiles {
     done
 }
 
-function install_emacsd {
-    if [[ -d ~/.emacs.d ]]; then
-	cd ~/.emacs.d
-	git pull -f origin master
-    else
-	git clone git@github.com:jmhelt/emacs.d.git ~/git/emacs.d \
-	    && ln -s ~/git/emacs.d ~/.emacs.d
-    fi
-}
-
 function install_r {
     sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9 \
 	&& sudo add-apt-repository -y 'deb https://cloud.r-project.org/bin/linux/ubuntu bionic-cran35/' \
@@ -97,7 +87,6 @@ install_packages \
 
 makedirs $GIT_REPO_DIR
 
-install_emacsd
 install_r
 install_google_drive
 install_spotify
@@ -105,4 +94,5 @@ install_zotero
 install_slack
 
 link_dotfiles \
-    gitconfig
+    gitconfig \
+    emacs.d
