@@ -60,6 +60,8 @@ function install_dropbox {
 sudo apt-get update && sudo apt-get upgrade -y
 
 install_packages \
+    autoconf \
+    automake \
     cscope \
     emacs \
     firefox \
@@ -67,6 +69,9 @@ install_packages \
     gcc \
     gdb \
     git \
+    libtool \
+    lm-sensors \
+    redshift \
     texlive \
     valgrind \
     vim \
