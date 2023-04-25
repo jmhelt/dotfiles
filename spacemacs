@@ -328,6 +328,9 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
        (add-hook 'doc-view-mode-hook 'auto-revert-mode)
+       (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
+             TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
+             TeX-source-correlate-start-server t)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
