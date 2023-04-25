@@ -90,8 +90,6 @@ link_dotfiles \
     gitconfig \
     emacs.d \
     spacemacs \
-    Xdefaults \
-    xinitrc \
     i3 \
     zprofile \
     zshrc \
