@@ -84,6 +84,19 @@ function install_slack {
     sudo snap install --classic slack
 }
 
+function install_monaco_font {
+    local dst="/usr/share/fonts/truetype/ttf-monaco"
+
+    if [[ ! -d $dst ]]; then
+	sudo mkdir -p "$dst" \
+	    && cd "$dst" \
+	    && sudo wget https://github.com/hbin/top-programming-fonts/raw/master/Monaco-Linux.ttf \
+	    && sudo mkfontdir \
+	    && cd .. \
+	    && fc-cache
+    fi
+}
+
 sudo apt-get update && sudo apt-get upgrade -y
 
 install_packages \
@@ -113,6 +126,7 @@ install_spotify
 install_dropbox
 install_zotero
 install_slack
+install_monaco_font
 
 link_dotfiles \
     gitconfig
