@@ -53,6 +53,11 @@ values."
      (syntax-checking :variables
                       syntax-checking-enable-tooltips nil)
      c-c++
+     java
+     python
+     ess
+     (ess :variables
+          ess-enable-smart-equals t)
 
      ;; version-control
      )
@@ -265,7 +270,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -308,6 +313,7 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   )
 
+
 (defun dotspacemacs/user-config ()
   "Configuration function for user code.
 This function is called at the very end of Spacemacs initialization after
@@ -325,7 +331,7 @@ you should place your code here."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(flyspell-correct-helm ace-jump-helm-line helm-themes helm-swoop helm-projectile helm-mode-manager helm-flx helm-descbinds helm-cscope helm-company helm-c-yasnippet helm-ag helm helm-core xcscope stickyfunc-enhance srefactor disaster company-c-headers cmake-mode clang-format orgit magit-gitflow flycheck-pos-tip evil-magit smeargle magit-popup magit gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-ivy flyspell-correct pos-tip flycheck transient git-commit with-editor dash company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete popup evil-visualstar evil goto-chg undo-tree ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline smex smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-escape eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word counsel-projectile column-enforce-mode clean-aindent-mode bind-map auto-highlight-symbol auto-compile async aggressive-indent ace-window ace-link)))
+   '(yapfify pyvenv pytest pyenv-mode py-isort pip-requirements live-py-mode hy-mode dash-functional helm-pydoc cython-mode company-anaconda anaconda-mode pythonic f company-emacs-eclim eclim s evil-cleverparens ess-R-data-view paredit ess-smart-equals ess ctable julia-mode helm-gitignore flyspell-correct-helm ace-jump-helm-line helm-themes helm-swoop helm-projectile helm-mode-manager helm-flx helm-descbinds helm-cscope helm-company helm-c-yasnippet helm-ag helm helm-core xcscope stickyfunc-enhance srefactor disaster company-c-headers cmake-mode clang-format orgit magit-gitflow flycheck-pos-tip evil-magit smeargle magit-popup magit gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link fuzzy flyspell-correct-ivy flyspell-correct pos-tip flycheck transient git-commit with-editor dash company-statistics company auto-yasnippet yasnippet auto-dictionary ac-ispell auto-complete popup evil-visualstar evil goto-chg undo-tree ws-butler winum which-key wgrep volatile-highlights vi-tilde-fringe uuidgen use-package toc-org spaceline smex smartparens restart-emacs request rainbow-delimiters popwin persp-mode pcre2el org-plus-contrib org-bullets open-junk-file neotree move-text macrostep lorem-ipsum linum-relative link-hint ivy-hydra indent-guide hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation helm-make google-translate golden-ratio flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-unimpaired evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-escape eval-sexp-fu elisp-slime-nav dumb-jump diminish define-word counsel-projectile column-enforce-mode clean-aindent-mode bind-map auto-highlight-symbol auto-compile async aggressive-indent ace-window ace-link)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
