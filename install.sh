@@ -78,6 +78,8 @@ install_packages \
     ttf-dejavu \
     vim \
     xautolock \
+    xorg-xinit \
+    xorg-server \
     zsh
 
 makedirs $GIT_REPO_DIR
