@@ -77,6 +77,7 @@ install_packages \
     gdb \
     git \
     latexmk \
+    libcurl4-openssl-dev \
     libelf-dev \
     libncurses5-dev \
     libssl-dev \
