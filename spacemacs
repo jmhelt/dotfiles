@@ -333,6 +333,7 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (smartparens-global-mode t)
+  (add-hook 'pdf-view-mode-hook (lambda() (linum-mode 0)))
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)
   (setq TeX-view-program-selection '((output-pdf "PDF Tools"))
         TeX-view-program-list '(("PDF Tools" TeX-pdf-tools-sync-view))
