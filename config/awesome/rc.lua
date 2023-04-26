@@ -1,6 +1,9 @@
 local awesome, client, screen = awesome, client, screen
 local string, os, tostring, type = string, os, tostring, type
 
+-- Debugging library
+--local debugging = require("debugging")
+
 -- Standard awesome library
 local gears = require("gears") --Utilities such as color parsing and objects
 local awful = require("awful") --Everything related to window managment
@@ -16,7 +19,6 @@ local naughty = require("naughty")
 naughty.config.defaults["icon_size"] = 75
 
 local lain        = require("lain")
-local freedesktop = require("freedesktop")
 local settings    = require("settings")
 
 -- Enable hotkeys help widget for VIM and other apps
@@ -109,20 +111,10 @@ local myawesomemenu = {
   { "restart", awesome.restart },
 }
 
-awful.util.mymainmenu = freedesktop.menu.build({
-  icon_size = beautiful.menu_height or 16,
-  before = {
-    { "Awesome", myawesomemenu, beautiful.awesome_icon },
-    --{ "Atom", "atom" },
-    -- other triads can be put here
-  },
-  after = {
-    { "Terminal", settings.terminal },
-    { "Log out", function() awesome.quit() end },
-    { "Sleep", "systemctl suspend" },
-    { "Restart", "systemctl reboot" },
-    { "Shutdown", "systemctl poweroff" },
-    -- other triads can be put here
+awful.util.mymainmenu = awful.menu({
+  items = {
+    { "awesome", myawesomemenu, beautiful.awesome_icon },
+    { "open terminal", settings.terminal }
   }
 })
 
@@ -616,3 +608,4 @@ end
 if (settings.use_flameshot == true) then
   run_once("flameshot")
 end
+
