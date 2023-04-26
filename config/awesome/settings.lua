@@ -21,19 +21,19 @@ settings.focusOnHover = true -- set to false if you don't want the window to foc
 ---------- Startup Programs ----------
 
 -- Required package: nitrogen
-settings.useNitrogen = false -- Set this to true for nitrogen to do your wallpaper (if you want to use the theme's default wallpaper set this to false)
+settings.use_nitrogen = false -- Set this to true for nitrogen to do your wallpaper (if you want to use the theme's default wallpaper set this to false)
 
 -- Required Package: picom
-settings.usePicom = true -- Set this to true if you want picom to launch on startup
+settings.use_picom = true -- Set this to true if you want picom to launch on startup
 
 -- Requires network manager
-settings.useNMApplet = true -- If you have network manager installed, you can use manage your network (i.e connect to wifi) from the system tray icon
+settings.use_nmapplet = true -- If you have network manager installed, you can use manage your network (i.e connect to wifi) from the system tray icon
 
 -- Required Package: lxpolkit
-settings.useLxPolkit = true -- If you would like to use a polkit (without one you can't easily install applications from the store or make changes to partitions for example), you can set this to true
+settings.use_lxpolkit = true -- If you would like to use a polkit (without one you can't easily install applications from the store or make changes to partitions for example), you can set this to true
 
 -- Required Package: flameshot
-settings.useFlameShot = false -- If you want flameshot (screenshotting tool) to auto start
+settings.use_flameshot = false -- If you want flameshot (screenshotting tool) to auto start
 
 
 ---------- Get your local weather ID from https://openweathermap.org/ ----------

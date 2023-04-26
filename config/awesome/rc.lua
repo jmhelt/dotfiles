@@ -584,30 +584,35 @@ client.connect_signal("focus", border_adjust)
 client.connect_signal("property::maximized", border_adjust)
 client.connect_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 
-
-if (settings.useNitrogen == true)
-then
-  awful.spawn.with_shell("nitrogen --restore")
+-- Auto-run background processes
+local function run_once(cmd)
+  local pname = cmd
+  local first_space = cmd:find(" ")
+  if first_space then
+    pname = cmd:sub(0, first_space-1)
+  end
+  cmd = string.format("pgrep -u $USER -x %s > /dev/null || (%s)", pname, cmd)
+  awful.spawn.with_shell(cmd)
 end
 
-if (settings.usePicom == true)
-then
-  awful.spawn.with_shell("picom -b")
+if (settings.use_nitrogen == true) then
+  run_once("nitrogen --restore")
 end
 
-if (settings.useNMApplet == true)
-then
-  awful.spawn.with_shell("nm-applet")
+if (settings.use_picom == true) then
+  run_once("picom -b")
+end
+
+if (settings.use_nmapplet == true) then
+  run_once("nm-applet")
 end
 
 -- Policy kit is an essential tool for managing privileges and permission,
 -- we are using lxpolkit for this matter, if you wish to use a different polkit install and change the directory here
-if (settings.useLxPolkit == true)
-then
-  awful.spawn.with_shell("/usr/bin/lxpolkit")
+if (settings.use_lxpolkit == true) then
+  run_once("lxpolkit")
 end
 
-if (settings.useFlameShot == true)
-then
-  awful.spawn.with_shell("flameshot")
+if (settings.use_flameshot == true) then
+  run_once("flameshot")
 end
