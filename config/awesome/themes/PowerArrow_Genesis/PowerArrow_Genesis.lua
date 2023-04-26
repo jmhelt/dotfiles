@@ -178,12 +178,13 @@ local tempicon = wibox.widget.imagebox(theme.widget_temp)
 local weathericon = wibox.widget.imagebox(theme.widget_weather)
 theme.weather = lain.widget.weather({
     city_id = settings.weatherID,
+    units = "imperial",
     notification_preset = { font = theme.font, fg = theme.fg_normal },
     weather_na_markup = markup.fontfg(theme.font, theme.fg_normal, "N/A "),
     settings = function()
         descr = weather_now["weather"][1]["description"]:lower()
         units = math.floor(weather_now["main"]["temp"])
-        widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, descr .. " @ " .. units .. "°C "))
+        widget:set_markup(markup.fontfg(theme.font, theme.fg_normal, descr .. " @ " .. units .. "°F "))
     end
 })
 
