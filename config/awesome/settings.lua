@@ -12,6 +12,12 @@ settings.themes = {
 
 settings.chosen_theme = settings.themes[2] -- replace number inside of [] with a theme number from the list above
 
+-- Font
+settings.font = "Roboto"
+settings.font_alt = "RobotoMono Nerd Font"
+settings.icon_font = "Symbols Nerd Font"
+settings.font_size = 14
+
 settings.enableTitlebar = false -- Set to true if you wish to have title bars on top of applications (i.e to have buttons: close, minimise, etc )
 
 settings.gap_size = 10 -- set your gap size here
