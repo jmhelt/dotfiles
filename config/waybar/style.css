@@ -1,200 +1,176 @@
 @import "themes/mocha.css";
 
 * {
-	border: none;
-	border-radius: 6px;
-	font-family: Noto, Symbols Nerd Font;
-	font-size: 20px;
-	font-weight: normal;
+  border: none;
+  border-radius: 6px;
+  font-family: Noto, Symbols Nerd Font;
+  font-size: 16px;
+  font-weight: normal;
 }
 
 button.text-button {
-	min-height: 24px;
-	min-width: 16px;
+  min-height: 24px;
+  min-width: 16px;
 }
 
 window#waybar {
-	background: shade(alpha(@mantle, 0.9), 1.0);
-	border-bottom: shade(alpha(@base, 0.9), 1.0);
-	color: @text;
-	transition-property: background-color;
-	transition-duration: .5s;
-	border-radius: 15px;
+  background: shade(alpha(@mantle, 0.9), 1.0);
+  border-bottom: shade(alpha(@base, 0.9), 1.0);
+  color: @text;
+  transition-property: background-color;
+  transition-duration: .5s;
+  border-radius: 15px;
 }
 
 window#waybar.hidden {
-	opacity: 0.2;
+  opacity: 0.2;
 }
 
 workspaces {
-	border-radius: 15px 6px 6px 15px;
+  border-radius: 15px 6px 6px 15px;
 }
 
 tooltip {
-	background: @base;
-	border: 2px solid @blue;
+  background: @base;
+  border: 2px solid @blue;
 }
 
 tooltip label {
-	color: @subtext1;
+  color: @subtext1;
 }
 
 #workspaces button {
-	padding: 0 5px;
-	background-color: transparent;
-	color: @text;
-	/* Use box-shadow instead of border so the text isn't offset */
-	box-shadow: inset 0 -3px transparent;
-	/* Avoid rounded borders under each workspace name */
-	border: none;
-	border-radius: 1px;
+  padding: 0 5px;
+  background-color: transparent;
+  color: @text;
+  /* Use box-shadow instead of border so the text isn't offset */
+  box-shadow: inset 0 -3px transparent;
+  /* Avoid rounded borders under each workspace name */
+  border: none;
+  border-radius: 1px;
 }
 
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 #workspaces button:hover {
-	background: rgba(0, 0, 0, 0.2);
-	box-shadow: inset 0 -3px @sky;
-	border-radius: 5px;
-	border: none;
+  background: rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 -3px @sky;
+  border-radius: 5px;
+  border: none;
 }
 
 #workspaces button.focused {
-	background-color: @surface2;
-	box-shadow: inset 0 -3px @blue;
-	border-radius: 5px;
-	border: none;
+  background-color: @surface2;
+  box-shadow: inset 0 -3px @blue;
+  border-radius: 5px;
+  border: none;
 }
 
 #workspaces button.urgent {
-	background-color: shade(alpha(@red, 0.7), 0.8);
+  background-color: shade(alpha(@red, 0.7), 0.8);
 }
 
+#battery,
+#bluetooth,
 #clock,
 #cpu,
-#memory,
 #disk,
-#temperature,
-#gamemode {
-	padding: 0 10px;
-	color: #ffffff;
-}
-
+#memory,
 #network,
-#bluetooth,
 #pulseaudio,
-#idle_inhibitor,
-#tray,
-#clock {
-	color: @white;
+#temperature {
+  padding: 0 5px;
+  color: @white;
 }
 
 #window,
 #workspaces {
-	margin: 0 4px;
+  margin: 0 4px;
 }
 
 /* If workspaces is the leftmost module, omit left margin */
 .modules-left > widget:first-child > #workspaces { 
-	margin-left: 0;   
+  margin-left: 0;   
 } 
 
 /* If workspaces is the rightmost module, omit right margin */
 .modules-right > widget:last-child > #workspaces {
-	margin-right: 0;
+  margin-right: 0;
 }
 
 @keyframes blink {
-	to {
-		background-color: #ffffff;
-		color: #000000;
-	}
+to {
+  background-color: #ffffff;
+  color: #000000;
+}
 }
 
 label:focus {
-	background-color: #000000;
+  background-color: #000000;
 }
 
 #cpu {
-	color: @teal;
+  color: @teal;
 }
 
 #cpu.warning {
-	color: @peach;
+  color: @peach;
 }
 
 #cpu.critical {
-	color: @red;
+  color: @red;
 }
 
 #memory {
-	color: @sapphire;
+  color: @sapphire;
 }
 
 #memory.warning {
-	color: @peach;
+  color: @peach;
 }
 
 #memory.critical {
-	color: @red;
+  color: @red;
 }
 
 #disk {
-	color: @mauve;
+  color: @mauve;
 }
 
 #disk.warning {
-	color: @peach;
+  color: @peach;
 }
 
 #disk.critical {
-	color: @red;
-}
-
-#network {
-	margin: 0px 5px 0px 30px;
-}
-
-#bluetooth {
-	margin: 0px 5px 0px 0px;
+  color: @red;
 }
 
 #bluetooth.connected {
-	color: @blue;
-	margin: 0px 5px 0px 0px; 
+  color: @blue;
 }
 
 #bluetooth.off {
-	color: @red;
-	margin: 0px 5px 0px 0px; 
-}
-
-#pulseaudio {
-	margin: 0px 5px 0px 0px;
+  color: @red;
 }
 
 #temperature {
-	color: @yellow;
+  color: @yellow;
 }
 
 #temperature.critical {
-	color: @red;
+  color: @red;
 }
 
 #tray > .passive {
-	-gtk-icon-effect: dim;
+  -gtk-icon-effect: dim;
 }
 
 #tray > .needs-attention {
-	-gtk-icon-effect: highlight;
-	color: @maroon;
-}
-
-#idle_inhibitor {
-	margin: 0px 5px 0px 0px;
+  -gtk-icon-effect: highlight;
+  color: @maroon;
 }
 
 .custom-spotify {
-	padding: 0 10px;
-	color: @green;
+  padding: 0 10px;
+  color: @green;
 }
 

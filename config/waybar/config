@@ -8,7 +8,18 @@
   "spacing": 4, // Gaps between modules (4px)
   "modules-left": ["sway/workspaces", "custom/spotify"],
   "modules-center": ["sway/window"],
-  "modules-right": ["cpu", "temperature", "memory", "disk", "network", "bluetooth", "pulseaudio", "tray", "clock"],
+  "modules-right": [
+    "cpu",
+    "temperature",
+    "memory",
+    "disk",
+    "network",
+    "bluetooth",
+    "tray",
+    "pulseaudio",
+    "battery",
+    "clock"
+  ],
   "sway/workspaces": {
     "format": "{name}",
     "sort-by-number": true,
@@ -91,7 +102,7 @@
   "network": {
     "interface": "wlan0",
     "interval": 5,
-    "format-wifi": " {essid} {signalStrength}%",
+    "format-wifi": " {essid}",
     "format-ethernet": "",
     "tooltip-format": "{ifname} {ipaddr}/{cidr} {gwaddr}",
     "format-linked": " No IP",
@@ -114,7 +125,7 @@
     "format": "{icon} {volume}%",
     "tooltip-format": "{icon} {volume}% {format_source}",
     "format-bluetooth": " {icon} {volume}%",
-    "format-bluetooth-muted": "",
+    "format-bluetooth-muted": "  ",
     "format-muted": "",
     "format-source": " {volume}%",
     "format-source-muted": "",
@@ -123,4 +134,15 @@
     },
     "on-click": "pavucontrol",
   },
+  "battery": {
+    "bat": "BAT0",
+    "interval": 60,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-icons": ["", "", "", "", ""],
+    "max-length": 25
+  }
 }
