@@ -1,3 +1,6 @@
 [submodule "oh-my-zsh"]
 	path = oh-my-zsh
 	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "config/awesome/lain"]
+	path = config/awesome/lain
+	url = git@github.com:lcpz/lain.git

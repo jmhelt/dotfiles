@@ -1,99 +1,97 @@
 #!/usr/bin/env bash
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-GIT_REPO_DIR="$HOME/git"
-
-# os constants
-ARCH="Arch Linux"
-
-# get this os string
-if [[ -n "$(command -v lsb_release)" ]]; then
-	  OS=$(lsb_release -s -d)
-elif [[ -f "/etc/os-release" ]]; then
-	  OS=$(grep PRETTY_NAME /etc/os-release | sed 's/PRETTY_NAME=//g' | tr -d '="')
-elif [[ -f "/etc/debian_version" ]]; then
-	  OS="Debian $(cat /etc/debian_version)"
-elif [[ -f "/etc/redhat-release" ]]; then
-	  OS=$(cat /etc/redhat-release)
-else
-	  OS="$(uname -s) $(uname -r)"
-fi
 
 function update_upgrade {
-    if [[ $OS == $ARCH ]]; then
-        sudo pacman -Syu --noconfirm
-    else
-        sudo apt-get update && sudo apt-get upgrade -y
-    fi
+  sudo pacman -Syu --noconfirm
 }
 
 function install_packages {
-    if [[ $OS == $ARCH ]]; then
-        sudo pacman -S --noconfirm "$@"
-    else
-        sudo apt-get install -y "$@"
-    fi
+  sudo pacman -S --noconfirm "$@"
 }
 
 function makedirs {
-    for dir in "$@"; do
-	      mkdir -p "$dir"
-    done
+  for dir in "$@"; do
+    mkdir -p "$dir"
+  done
 }
 
 function link_dotfile {
-    ln -sf "$SCRIPT_DIR/$1" "$HOME/.$1"
+  ln -sf "$SCRIPT_DIR/$1" "$HOME/.$1"
 }
 
 function link_dotfiles {
-    for f in "$@"; do
-	      link_dotfile "$f"
-    done
+  for f in "$@"; do
+    link_dotfile "$f"
+  done
 }
 
-function link_xdg_file {
-    [[ ! -e "$HOME/.config" ]] && mkdir "$HOME/.config"
-    ln -sf "$SCRIPT_DIR/$1" "$HOME/.config/$1"
+function link_xdg_config_file {
+  [[ ! -e "$HOME/.config" ]] && mkdir "$HOME/.config"
+  ln -sf "$SCRIPT_DIR/config/$1" "$HOME/.config/$1"
 }
 
-function link_xdg_files {
-    for f in "$@"; do
-	      link_xdg_file "$f"
-    done
+function link_xdg_config_files {
+  for f in "$@"; do
+    link_xdg_config_file "$f"
+  done
+}
+
+function link_xdg_data_file {
+  [[ ! -e "$HOME/.local/share" ]] && mkdir -p "$HOME/.local/share"
+  ln -sf "$SCRIPT_DIR/local/share/$1" "$HOME/.local/share/$1"
+}
+
+function link_xdg_data_files {
+  for f in "$@"; do
+    link_xdg_data_file "$f"
+  done
 }
 
 update_upgrade
 
+# Window manager
 install_packages \
-    dmenu \
-    emacs \
-    firefox \
-    git \
-    i3-wm \
-    i3blocks \
-    i3lock \
-    i3status \
-    openssh \
-    termite \
-    ttf-dejavu \
-    vim \
-    xautolock \
-    xorg-xinit \
-    xorg-server \
-    zsh
+  sway \
+  swaybg \
+  swayidle \
+  swaylock \
+  waybar \
+  wofi \
+  mako
 
-makedirs $GIT_REPO_DIR
+# Fonts
+install_packages \
+  ttf-dejavu \
+  ttf-liberation \
+  ttf-nerd-fonts-symbols-2048-em \
+  noto-fonts \
+  noto-fonts-extra
 
-link_xdg_files \
-    i3 \
-    termite
+install_packages \
+  firefox \
+  git \
+  kitty \
+  openssh \
+  vim \
+  zsh
+
+link_xdg_config_files \
+  kitty \
+  sway \
+  swaylock \
+  waybar \
+  wofi
+
+link_xdg_data_files \
+  fonts \
+  icons \
+  themes
 
 link_dotfiles \
-    emacs.d \
-    gitconfig \
-    oh-my-zsh \
-    spacemacs \
-    xinitrc \
-    Xmodmap \
-    zprofile \
-    zshrc
+  gitconfig \
+  oh-my-zsh \
+  Xmodmap \
+  zprofile \
+  zshrc
+

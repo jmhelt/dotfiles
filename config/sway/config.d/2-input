@@ -1,0 +1,16 @@
+# Input
+
+# Trackpad
+input "1267:47:Elan_Touchpad" {
+    dwt enabled
+    tap enabled
+    natural_scroll enabled
+    middle_emulation enabled
+}
+
+# Keyboard
+input "1:1:AT_Translated_Set_2_keyboard" {
+   xkb_layout us
+   xkb_options caps:ctrl_modifier
+}
+
