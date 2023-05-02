@@ -37,56 +37,44 @@ function link_xdg_config_files {
   done
 }
 
-function link_xdg_data_file {
-  [[ ! -e "$HOME/.local/share" ]] && mkdir -p "$HOME/.local/share"
-  ln -sf "$SCRIPT_DIR/local/share/$1" "$HOME/.local/share/$1"
-}
-
-function link_xdg_data_files {
-  for f in "$@"; do
-    link_xdg_data_file "$f"
-  done
-}
-
 update_upgrade
 
 # Window manager
 install_packages \
+  mako \
   sway \
   swaybg \
   swayidle \
   swaylock \
   waybar \
   wofi \
-  mako
+  xorg-xwayland
 
 # Fonts
 install_packages \
   ttf-dejavu \
   ttf-liberation \
   ttf-nerd-fonts-symbols-2048-em \
+  ttf-noto-nerd \
+  ttf-hack-nerd \
   noto-fonts \
   noto-fonts-extra
 
 install_packages \
   firefox \
   git \
-  kitty \
+  foot \
   openssh \
   vim \
   zsh
 
 link_xdg_config_files \
-  kitty \
+  foot \
+  mako \
   sway \
   swaylock \
   waybar \
   wofi
-
-link_xdg_data_files \
-  fonts \
-  icons \
-  themes
 
 link_dotfiles \
   gitconfig \

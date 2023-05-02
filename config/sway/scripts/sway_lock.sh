@@ -9,7 +9,7 @@ LOCK_ARGS=""
 
 # Items
 # Font
-FONT_NAME="SF-Pro-Display-Regular"
+FONT_NAME="Noto-Regular"
 FONT_SIZE="32"
 FONT_COLOR="#cdd6f4"
 # Message

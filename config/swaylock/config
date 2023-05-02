@@ -5,7 +5,7 @@ ignore-empty-password
 indicator-radius=120
 indicator-thickness=20
 line-uses-ring
-font="SF Pro Display"
+font="Noto"
 font-size=32
 
 # Colors

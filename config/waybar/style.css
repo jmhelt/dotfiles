@@ -3,9 +3,8 @@
 * {
 	border: none;
 	border-radius: 6px;
-	/* `otf-font-awesome` is required to be installed for icons */
-	font-family: Symbols Nerd Font, SF Pro Display, Noto Sans CJK JP;
-	font-size: 14px;
+	font-family: Noto, Symbols Nerd Font;
+	font-size: 20px;
 	font-weight: normal;
 }
 
@@ -199,27 +198,3 @@ label:focus {
 	color: @green;
 }
 
-#gamemode {
-	color: @flamingo;
-}
-
-#custom-rightseparator {
-	color: rgba(67, 255, 100, 0);
-	padding: 0 1px;
-	font-size: 1px;
-	margin: 0px 3px 0px 1px;
-}
-
-#custom-leftseparator {
-	color: rgba(67, 255, 100, 0);
-	padding: 0 1px;
-	font-size: 1px;
-	margin: 0px 1px 0px 3px;
-}
-
-#custom-middleseparator {
-	color: rgba(67, 255, 100, 0);
-	padding: 0 1px;
-	font-size: 1px;
-	margin: 0px 2px 0px 2px;
-}

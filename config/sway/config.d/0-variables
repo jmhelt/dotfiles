@@ -16,7 +16,7 @@ set $up k
 set $right l
 
 # Terminal
-set $term kitty #$TERM
+set $term foot #$TERM
 
 # Browser
 set $browser firefox #$BROWSER
@@ -51,9 +51,9 @@ set $screenshotArea $HOME/.config/sway/scripts/screenshot_area.sh
 set $screenshotMonitor $HOME/.config/sway/scripts/screenshot_monitor.sh
 
 # Font (pango)
-set $fontName "SF Pro Display"
+set $fontName "Noto"
 set $fontStyle Regular
-set $fontSize 12
+set $fontSize 14
 
 # Cursor Theme
 set $cursorName Catppuccin-Mocha-Blue-Cursors
