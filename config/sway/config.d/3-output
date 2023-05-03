@@ -2,6 +2,5 @@
 
 # Monitors
 output $monitorLaptop resolution 1920x1080 pos 0 0
+output $monitorHDMI resolution 1920x1080 pos 0 -1080
 
-# Set Prefered Monitor for X11/Wine (fix some bugs)
-exec_always xrandr --output $xwaylandMonitor --primary

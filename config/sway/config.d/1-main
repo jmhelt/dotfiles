@@ -9,14 +9,19 @@ exec swayidle -w \
 	before-sleep 'playerctl pause' \
 	before-sleep '$lockScript'
 
-# Assigned Workspaces to Monitors
-# Monitor Laptop
+# Assign Workspaces to Monitors
+# Laptop Monitor
 workspace $ws1 output $monitorLaptop
 workspace $ws2 output $monitorLaptop
 workspace $ws3 output $monitorLaptop
 workspace $ws4 output $monitorLaptop
 workspace $ws5 output $monitorLaptop
 workspace $ws6 output $monitorLaptop
+# HDMI Monitor
+workspace $ws7 output $monitorHDMI
+workspace $ws8 output $monitorHDMI
+workspace $ws9 output $monitorHDMI
+workspace $ws10 output $monitorHDMI
 
 # Key bindings
 # Start a terminal

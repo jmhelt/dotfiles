@@ -5,6 +5,7 @@ set $mod Mod4
 
 # Monitors
 set $monitorLaptop eDP-1
+set $monitorHDMI HDMI-A-2
 
 # Virtual X11 Monitor
 set $xwaylandMonitor XWAYLAND0
