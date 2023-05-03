@@ -9,7 +9,7 @@ LOCK_ARGS=""
 
 # Items
 # Font
-FONT_NAME="Noto-Regular"
+FONT_NAME="NotoSans-NF-Reg"
 FONT_SIZE="32"
 FONT_COLOR="#cdd6f4"
 # Message
@@ -29,9 +29,8 @@ FILTER_VALUE="20%"
 BLUR_TYPE="0x5"
 BLUR_VALUE="500%"
 
-if [[ ! pgrep -x swaylock &> /dev/null ]]; then
-  OUTPUTS=$(swaymsg -t get_outputs | jq -r '.[] | select(.active == true) | .name')
-  for OUTPUT in $OUTPUTS; do
+if ! pgrep -x swaylock &> /dev/null ; then
+  for OUTPUT in `swaymsg -t get_outputs | jq -r '.[] | select(.active == true) | .name'`; do
     IMAGE=/tmp/"$OUTPUT"-lock.png
 
     grim -o "$OUTPUT" "$IMAGE"

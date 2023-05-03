@@ -16,10 +16,10 @@ set $up k
 set $right l
 
 # Terminal
-set $term foot #$TERM
+set $term $TERM
 
 # Browser
-set $browser firefox #$BROWSER
+set $browser $BROWSER
 
 # Idle timeouts (seconds)
 set $lockTime 300
@@ -29,9 +29,6 @@ set $keyLockOffTime 20
 
 # Lock Script
 set $lockScript $HOME/.config/sway/scripts/sway_lock.sh
-
-# Switch Monitor Notification Script
-set $monitorSwitch $HOME/.config/sway/scripts/monitor_switch.sh
 
 # Application Launcher
 set $menu wofi | xargs swaymsg exec --

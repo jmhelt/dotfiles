@@ -1,9 +1,13 @@
-# Autostart
+### Autostart
+
 # Terminal Server
 exec foot -s
 
-# Notification
+# Notifications
 exec mako
+
+# Redshift
+exec gammastep-indicator &
 
 # Spotify with wayland support
 exec spotify --enable-features=UseOzonePlatform --ozone-platform=wayland
