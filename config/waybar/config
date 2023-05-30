@@ -2,9 +2,7 @@
   "layer": "top", // Waybar at top layer
   "position": "top", // Waybar position (top|bottom|left|right)
   "height": 35, // Waybar height (to be removed for auto height)
-  "margin-left": 2, // Waybar left margin
-  "margin-right": 2, // Waybar right margin
-  "spacing": 4, // Gaps between modules (4px)
+  "spacing": 12, // Gaps between modules
   "modules-left": ["sway/workspaces", "custom/spotify"],
   "modules-center": ["sway/window"],
   "modules-right": [
@@ -38,9 +36,6 @@
   "sway/window": {
     "format": "{shell} {app_id}",
     "max-length": 50
-  },
-  "tray": {
-    "spacing": 5
   },
   "clock": {
     "format": " {:%Y-%m-%d %I:%M}",
