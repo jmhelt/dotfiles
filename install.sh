@@ -41,6 +41,7 @@ update_upgrade
 
 # Window manager
 install_packages \
+  archlinux-wallpaper \
   mako \
   sway \
   swaybg \

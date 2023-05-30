@@ -35,7 +35,7 @@ set $lockScript $HOME/.config/sway/scripts/sway_lock.sh
 set $menu wofi | xargs swaymsg exec --
 
 # Wallpaper Path
-set $wallpaperPath $HOME/.wall
+set $wallpaperPath /usr/share/backgrounds/archlinux/conference.png
 
 # GTK Script
 set $gtkScript $HOME/.config/sway/scripts/import-gsettings
