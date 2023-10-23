@@ -1,0 +1,10 @@
+# User environment variables
+export BROWSER=firefox # browser
+export EDITOR=emacs # editor
+export LANG=en_US.UTF-8 # language
+export TERM=alacritty # terminal
+
+if [[ "$(tty)" = "/dev/tty1" ]]; then
+	# Start xfce4
+	exec startxfce4
+fi

@@ -7,7 +7,7 @@ exec foot -s
 exec mako
 
 # Redshift
-exec gammastep-indicator &
+exec gammastep-indicator -t 4000:3000 &
 
 # Spotify with wayland support
 exec spotify --enable-features=UseOzonePlatform --ozone-platform=wayland

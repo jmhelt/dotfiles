@@ -59,6 +59,7 @@ install_packages \
   ttf-noto-nerd \
   ttf-hack-nerd \
   noto-fonts \
+  noto-fonts-cjk \
   noto-fonts-extra
 
 install_packages \
