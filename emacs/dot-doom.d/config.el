@@ -45,9 +45,9 @@
 (setq org-directory "~/git/notebook/")
 
 ;; Recursively add all files in the org directory as agenda files.
-;; (after! org
-;;   (nconc org-agenda-files
-;;          (directory-files-recursively org-directory org-agenda-file-regexp)))
+(after! org
+  (nconc org-agenda-files
+         (directory-files-recursively org-directory org-agenda-file-regexp)))
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an

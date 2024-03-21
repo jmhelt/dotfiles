@@ -24,8 +24,8 @@
        company           ; the ultimate code completion backend
        ;;helm              ; the *other* search engine for love and life
        ;;ido               ; the other *other* search engine...
-       ;;ivy               ; a search engine for love and life
-       vertico           ; the search engine of the future
+       (ivy +fuzzy)      ; a search engine for love and life
+       ;;vertico           ; the search engine of the future
 
        :ui
        ;;deft              ; notational velocity for Emacs
@@ -81,8 +81,8 @@
 
        :checkers
        syntax              ; tasing you for every semicolon you forget
-       ;;(spell +flyspell) ; tasing you for misspelling mispelling
-       ;;grammar           ; tasing grammar mistake every you make
+       (spell +aspell +flyspell)   ; tasing you for misspelling mispelling
+       grammar           ; tasing grammar mistake every you make
 
        :tools
        ;;ansible
@@ -145,7 +145,7 @@
        ;;javascript        ; all(hope(abandon(ye(who(enter(here))))))
        ;;julia             ; a better, faster MATLAB
        ;;kotlin            ; a better, slicker Java(Script)
-       ;;latex             ; writing papers in Emacs has never been so fun
+       latex             ; writing papers in Emacs has never been so fun
        ;;lean              ; for folks with too much to prove
        ;;ledger            ; be audit you can be
        ;;lua               ; one-based indices? one-based indices

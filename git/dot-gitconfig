@@ -3,7 +3,7 @@
 	email = jmhelt@users.noreply.github.com
 	username = jmhelt
 [core]
-	editor = nvim
+	editor = vim
 [push]
 	default = simple
 [pull]
