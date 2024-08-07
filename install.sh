@@ -10,48 +10,20 @@ function install_packages {
   sudo pacman -S --noconfirm "$@"
 }
 
-function makedirs {
-  for dir in "$@"; do
-    mkdir -p "$dir"
-  done
-}
-
-function link_dotfile {
-  ln -sf "$SCRIPT_DIR/$1" "$HOME/.$1"
-}
-
-function link_dotfiles {
-  for f in "$@"; do
-    link_dotfile "$f"
-  done
-}
-
-function link_xdg_config_file {
-  [[ ! -e "$HOME/.config" ]] && mkdir "$HOME/.config"
-  ln -sf "$SCRIPT_DIR/config/$1" "$HOME/.config/$1"
-}
-
-function link_xdg_config_files {
-  for f in "$@"; do
-    link_xdg_config_file "$f"
-  done
-}
-
 update_upgrade
 
-# Window manager
+# sway window manager
 install_packages \
-  archlinux-wallpaper \
-  mako \
+  foot \
   sway \
   swaybg \
   swayidle \
   swaylock \
   waybar \
-  wofi \
+  wmenu \
   xorg-xwayland
 
-# Fonts
+# fonts
 install_packages \
   ttf-dejavu \
   ttf-liberation \
@@ -62,26 +34,13 @@ install_packages \
   noto-fonts-cjk \
   noto-fonts-extra
 
+# basics
 install_packages \
+  emacs-wayland \
   firefox \
   git \
-  foot \
   openssh \
+  stow \
   vim \
   zsh
-
-link_xdg_config_files \
-  foot \
-  mako \
-  sway \
-  swaylock \
-  waybar \
-  wofi
-
-link_dotfiles \
-  gitconfig \
-  oh-my-zsh \
-  Xmodmap \
-  zprofile \
-  zshrc
 
