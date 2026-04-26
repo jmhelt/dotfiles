@@ -1,0 +1,12 @@
+[user]
+	name = Jeff Helt
+	email = jmhelt@users.noreply.github.com
+	username = jmhelt
+[core]
+	editor = vim
+[push]
+	default = simple
+[pull]
+	rebase = false
+[init]
+	defaultBranch = main

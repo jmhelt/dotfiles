@@ -1,3 +1,31 @@
-[submodule "oh-my-zsh"]
-	path = oh-my-zsh
-	url = https://github.com/robbyrussell/oh-my-zsh.git
+[submodule "zsh/.config/zsh/oh-my-zsh"]
+	path = zsh/.config/zsh/oh-my-zsh
+	url = https://github.com/ohmyzsh/ohmyzsh.git
+
+[submodule "zsh/.config/zsh/plugins/zsh-autocomplete"]
+	path = zsh/.config/zsh/plugins/zsh-autocomplete
+	url = https://github.com/marlonrichert/zsh-autocomplete.git
+
+[submodule "zsh/.config/zsh/plugins/zsh-autosuggestions"]
+	path = zsh/.config/zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+
+[submodule "zsh/.config/zsh/plugins/zsh-syntax-highlighting"]
+	path = zsh/.config/zsh/plugins/zsh-syntax-highlighting
+	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+
+[submodule "zsh/.config/zsh/plugins/zsh-vi-mode"]
+	path = zsh/.config/zsh/plugins/zsh-vi-mode
+	url = https://github.com/jeffreytse/zsh-vi-mode.git
+
+[submodule "zsh/.config/zsh/plugins/zsh-you-should-use"]
+	path = zsh/.config/zsh/plugins/zsh-you-should-use
+	url = https://github.com/MichaelAquilina/zsh-you-should-use.git
+
+[submodule "zsh/.config/zsh/pure"]
+	path = zsh/.config/zsh/pure
+	url = https://github.com/sindresorhus/pure.git
+
+[submodule "emacs/.config/emacs"]
+	path = emacs/.config/emacs
+	url = https://github.com/doomemacs/doomemacs.git
