@@ -42,6 +42,27 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+;; Python / pyenv / virtualenv
+(setq pyenv-mode-mode-line-format nil)  ; keep modeline clean
+
+(after! python
+  ;; tell pythonic where pyenv lives so it finds shims + envs
+  (setq pythonic-environment "~/.pyenv/shims/python")
+
+  ;; auto-activate pyenv version when visiting a project with .python-version
+  (add-hook 'python-mode-hook #'pyenv-mode))
+
+(after! lsp-mode
+  ;; prefer pylsp or pyright; install one with pip in each venv
+  (setq lsp-pylsp-plugins-pylint-enabled t
+        lsp-pylsp-plugins-pyflakes-enabled nil
+        lsp-pylsp-plugins-flake8-enabled t))
+
+(after! pyvenv
+  ;; look for virtualenvs in pyenv's versions dir
+  (setenv "WORKON_HOME" (expand-file-name "~/.pyenv/versions"))
+  (pyvenv-tracking-mode 1))
+
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.

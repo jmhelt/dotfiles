@@ -1,7 +1,7 @@
 export ZSH="$ZDOTDIR/oh-my-zsh"
 ZSH_THEME=""
 
-plugins=(git ssh-agent sudo)
+plugins=(git sudo)
 
 # zsh-autocomplete must be sourced before oh-my-zsh calls compinit
 source $ZDOTDIR/plugins/zsh-autocomplete/zsh-autocomplete.plugin.zsh
