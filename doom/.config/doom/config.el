@@ -56,7 +56,12 @@
   ;; prefer pylsp or pyright; install one with pip in each venv
   (setq lsp-pylsp-plugins-pylint-enabled t
         lsp-pylsp-plugins-pyflakes-enabled nil
-        lsp-pylsp-plugins-flake8-enabled t))
+        lsp-pylsp-plugins-flake8-enabled t)
+  ;; rust-analyzer: enable clippy on save, show inlay hints
+  (setq lsp-rust-analyzer-cargo-watch-command "clippy"
+        lsp-rust-analyzer-display-chained-hint-types t
+        lsp-rust-analyzer-display-parameter-hints t
+        lsp-rust-analyzer-display-closure-return-type-hints t))
 
 (after! pyvenv
   ;; look for virtualenvs in pyenv's versions dir
