@@ -29,6 +29,9 @@ stow -v -t "$HOME" git
 # Stow doom user config — creates ~/.config/doom/
 stow -v -t "$HOME" doom
 
+# Stow pop-shell config — creates ~/.config/pop-shell/
+stow -v -t "$HOME" pop-shell
+
 
 echo ""
 echo "====================================================="
