@@ -32,7 +32,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-tomorrow-day)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -51,6 +51,9 @@
 
   ;; auto-activate pyenv version when visiting a project with .python-version
   (add-hook 'python-mode-hook #'pyenv-mode))
+
+(after! consult
+  (setq consult-find-args "fd --color=never --hidden --exclude .git"))
 
 (after! lsp-mode
   ;; prefer pylsp or pyright; install one with pip in each venv
